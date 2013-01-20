@@ -3,8 +3,6 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
                 template="./WEB-INF/template.xhtml">
 
     <ui:define name="content">
@@ -13,19 +11,18 @@
 
 <article>
   <header>
-      <p>
-          <time datetime="2013-01-15 18:02:31">
-               <h:outputText value="#{index.latestEntry.created}" >
-                   <f:convertDateTime type="both" dateStyle="long"/>
-                </h:outputText></time>
-          #{index.latestEntry.subtitle}
-      </p>
-    <h2>#{index.latestEntry.title}</h2>
+    <p><time datetime="2013-01-15 18:02:31">2013-01-15 18:02</time></p>
+	<h2>Blogsystem</h2>
   </header>  
-  
-    <h:outputText escape="false" value="#{index.latestEntry.htmlContent}" />
     
-   <footer>       
+  <p>Im Prinzip bin ich mit blogger.com zufrieden. Allerdings reizt natürlich auch mal wieder ein neues System...</p>
+  <p><img src="http://polpix.sueddeutsche.com/bild/1.1575007.1358355058/860x860/pep-guardiola.jpg" /></p>
+  <p>Vermutlich werde ich meinen Blog umziehen und technologisch auf jekyllbootstrap (http://jekyllbootstrap.com/) umstellen. Mit dem Kommentarsystem von disqus (http://disqus.com) schaut das Ganze eigentlich ganz nett aus :-)</p>  
+  <p>Sobald ich hier technisch dazu gekommen bin, werde ich natürlich hier darüber berichten.</p>  
+
+  
+  <footer>
+       
         <!-- AddThis Button BEGIN -->
 <div class="addthis_toolbox addthis_default_style addthis_32x32_style"
      >
@@ -88,22 +85,18 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </script>
 
              </div>
-            
-            <ui:repeat value="#{index.lastEntries}"  var="entry">
 <article>
   <header>
-    <p>
-     <time datetime="2013-01-15 18:02:31">
-               <h:outputText value="#{entry.created}" >
-                   <f:convertDateTime type="both" dateStyle="long"/>
-                </h:outputText></time>
-    </p>
-	<h2>#{entry.title}</h2>
+    <p><time datetime="2013-01-15 18:02:31">2013-01-15 18:02</time></p>
+	<h2>Blogsystem</h2>
   </header>  
-    
-    
-    <h:outputText escape="false" value="#{entry.htmlContent}" />
-    
+  <p>
+  Im Prinzip bin ich mit blogger.com zufrieden. Allerdings reizt natürlich auch mal wieder ein neues System...
+  
+  <a href="#">[weiterlesen]</a>
+  </p>
+  
+  
     <footer>
         <!-- AddThis Button BEGIN -->
         <div class="indexSocialLinks2 addthis_toolbox addthis_default_style addthis_16x16_style"
@@ -123,7 +116,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
   </footer>  
 </article>
         
-</ui:repeat>
+            
             
             <article>
   <header>
