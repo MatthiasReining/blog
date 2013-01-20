@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    
+    <h:head>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="http://yandex.st/highlightjs/7.3/styles/default.min.css" />
+        <script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
+
+    </h:head>
+
+    <h:body>
+
+<div id="blog">
+
+<header>
+	<h1>Matthias Reining's Blog</h1>
+	<p>check out <a href="http://about.me/MatthiasReining" target="_blank">about.me/MatthiasReining</a></p>
+</header>
+<hr/>
+
+
+
+<article>
+  <header>
+    <p><time datetime="2013-01-15 18:02:31">2013-01-15 18:02</time></p>
+	<h2 class="f4">Blogsystem</h2>
+  </header>  
+    
+  <p>Im Prinzip bin ich mit blogger.com zufrieden. Allerdings reizt natürlich auch mal wieder ein neues System...</p>
+  <p><img src="http://polpix.sueddeutsche.com/bild/1.1575007.1358355058/860x860/pep-guardiola.jpg" /></p>
+  <p>Vermutlich werde ich meinen Blog umziehen und technologisch auf jekyllbootstrap (http://jekyllbootstrap.com/) umstellen. Mit dem Kommentarsystem von disqus (http://disqus.com) schaut das Ganze eigentlich ganz nett aus :-)</p>  
+  <p>Sobald ich hier technisch dazu gekommen bin, werde ich natürlich hier darüber berichten.</p>  
+  
+
+</article>
+
+
+<article>
+  <header>
+    <p><time datetime="2013-01-15 18:02:31">2013-01-15 18:02</time></p>
+	<h2>Blogsystem</h2>
+    
+  </header>  
+  <p>
+  Im Prinzip bin ich mit blogger.com zufrieden. Allerdings reizt natürlich auch mal wieder ein neues System...
+  </p>
+  <p>
+  Vermutlich werde ich meinen Blog umziehen und technologisch auf jekyllbootstrap (http://jekyllbootstrap.com/) umstellen. Mit dem Kommentarsystem von disqus (http://disqus.com) schaut das Ganze eigentlich ganz nett aus :-)
+  </p>  
+  <p>
+  Sobald ich hier technisch dazu gekommen bin, werde ich natürlich hier darüber berichten.
+  </p>  
+  
+</article>
+
+
+
+<article>
+  <header>
+    <p>
+		<time datetime="2013-01-15 18:02:31">2013-01-15 18:02</time>
+		blub blub
+	</p>
+	<h2>SPD stürzt mit Steinbrück auf neues Tief</h2>
+  </header>
+  
+  <p>Der jüngste Ausbruch der Gewalt im Zentrum und im Norden Malis zwingt immer mehr Menschen in die Flucht. Die Vereinten Nationen gehen davon aus, dass durch die Kümpfe zwischen islamistischen Rebellen und der Armee, in die seit Freitag vergangener Woche franzüsische Truppen eingreifen, etwa 30.000 Münner, Frauen und Kinder innerhalb des Landes vertrieben worden sind.</p>
+  <p>Die Union nühert sich dem neuen "Stern-RTL-Wahltrend" zufolge auf Bundesebene einer absoluten Mehrheit im Parlament. Der am Mittwoch verüffentlichten Forsa-Umfrage zufolge künnte die CDU/CSU bei einer Bundestagswahl derzeit mit 43 Prozent der Stimmen rechnen, ein Prozentpunkt mehr als in der Vorwoche. Das würen nur noch zwei Prozentpunkte weniger als für die übrigen dann im Bundestag vertretenen Parteien zusammen. </p>
+  <p>Das ist dreieinhalb Jahre her. Und jetzt, acht Monate vor der Bundestagswahl, steht die SPD wieder so da. Bei 23 Prozent. Nach 2009 hat sich die Partei mühsam wieder vorangekümpft. Schritt für Schritt. Bei 30 Prozent lag sie kurz nach der Nominierung von Peer Steinbrück zum Kanzlerkandidaten im September.</p>
+  <p>Es war ein langer, harter Weg dahin. Parteichef Sigmar Gabriel hat die Partei neu ausgerichtet, ihr Selbstvertrauen zurückgegeben. Sie - wenn auch nicht vollstündig, so doch zu groüen Teilen - mit der Agenda 2010 versühnt.</p>
+  <p>This is the contents of the article element.</p>
+  
+  <p>
+  Jetzt kommt der Code:
+  
+<pre><code>package com.sourcecoding.multitenancy;
+
+public class AuthenticationEvent {
+
+	private MultiTenancyUser user;
+	private boolean authenticated;
+
+	public AuthenticationEvent(MultiTenancyUser user, boolean authenticated) {
+		this.user = user;
+		this.authenticated = authenticated;
+	}
+
+	public MultiTenancyUser getUser() {
+		return user;
+	}
+
+	public boolean isAuthenticated() {
+		return authenticated;
+	}
+
+}</code></pre>
+  
+  </p>
+</article>
+
+
+<article>
+<header>
+	<p>Donnerstag, 25. Oktober 2012</p>
+	<h2>Software Architektur - Designentscheidung: Modelgetriebene Entwicklung</h2>
+</header>
+<p>
+Als Software Architekt steht man zu Projektbeginn vor vielen Entscheidungen.
+Eine Entscheidung ist unter anderem ob man Modelgetrieben, inkl. Casetool-Unterstützung, vorgehen will oder eben nicht.
+</p>
+
+<p>
+Im folgenden einige Punkte wieso ich mich bisher gegen den MDA / MDSD Ansatz (Model Driven Architecture, Model Driven Software Development) entschieden habe:
+</p>
+
+<ul>
+	<li>
+		<p>MDA ist cool wenn es ein groües unternehmensweites Datenmodell gibt. Unternehmensweite Datenmodelle sind aufgrund der Service Orientierung etwas aus der Mode gekommen (der erste google Treffer zu üUnternehmensweite Datenmodelleü ist ein Artikel aus der Computerwoche <b>von 1989</b> (http://www.computerwoche.de/heftarchiv/1989/37/1151959/).</p>
+		<p>In grüüeren Unternehmen existieren viele spezialisierte Applikationen die nur über definierte Schnittstellen kommunizieren müssen (beispielsweise über BUS- oder Workflowsysteme). Eine SOA passt hier oft besser als eine groüe Anwendung, die mit einem unternehmensweiten Datenmodell umgehen kann.</p>
+		<p>Kleine modulare Applikationen ü Sind die einzelnen Applikationen klein bzw. auch deren Datenmodell, stellt sich die Frage ob der Einsatz eines Case-Tools mit Klassengeneratoren eher die Produktionsgeschwindikgeit ausbremst.</p>
+	</li>
+	<li>
+		<p>Beim Einsatz eines OR-Mappers bspw. basierend auf JPA wie Hibernate oder EclipseLink ist schon seit langen kein aufwündiges XML mehr notwendig. Mit Hilfe von Annotations lassen sich die Datenbank-Entitüten definieren.</p>
+		<p>Bei der Verwendung eines MDA-Ansatzes künnen XML Beschreibungen zu den Java-Entitüts-Klassen automatisch generiert werden. Hier ist ein MDA Ansatz durchaus sinnvoll.</p>
+		<p>Bei der Verwendung von Annotations wie bspw. in der JEE (@Entity) lüsst sich sehr schlank ein Datenmodell definieren. Der Einsatz von Case-Tools mit Klassengeneratoren verringern hier eher die Produktionsgeschwindigkeit.</p>
+	</li>
+</ul>
+</article>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+</div>
+
+
+    </h:body>
+
+</html>
