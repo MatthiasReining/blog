@@ -2,8 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.sourcecoding.blog;
+package com.sourcecoding.blog.presentation;
 
+import com.sourcecoding.blog.model.BlogEntry;
+import com.sourcecoding.blog.EntryProcessor;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
@@ -22,28 +24,28 @@ public class Index {
     EntryProcessor ep;
     
     @PostConstruct
-    private void create() {
+    void create() {
         latestEntry = ep.getEntries().get(0);
         lastEntries = ep.getEntries().subList(1, ep.getEntries().size());        
     }
     
-    private Entry latestEntry;
+    private BlogEntry latestEntry;
     
-    private List<Entry> lastEntries;
+    private List<BlogEntry> lastEntries;
 
-    public List<Entry> getLastEntries() {
+    public List<BlogEntry> getLastEntries() {
         return lastEntries;
     }
 
-    public void setLastEntries(List<Entry> lastEntries) {
+    public void setLastEntries(List<BlogEntry> lastEntries) {
         this.lastEntries = lastEntries;
     }
 
-    public Entry getLatestEntry() {
+    public BlogEntry getLatestEntry() {
         return latestEntry;
     }
 
-    public void setLatestEntry(Entry latestEntry) {
+    public void setLatestEntry(BlogEntry latestEntry) {
         this.latestEntry = latestEntry;
     }
 }
