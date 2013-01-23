@@ -2,14 +2,11 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.sourcecoding.blog;
+package com.sourcecoding.blog.business.build.control;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileFilter;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import com.sourcecoding.blog.business.build.entity.BlogEntry;
+import com.sourcecoding.blog.business.configuration.boundary.entity.Configuration;
+import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -20,16 +17,16 @@ import org.pegdown.PegDownProcessor;
  *
  * @author mre
  */
-class ContentCollector {
+public class ContentCollector {
 
-    private String mdDirectoryPath;
+    private String mdContentDirectoryPath;
 
-    public ContentCollector(String mdDirectoryPath) {
-        this.mdDirectoryPath = mdDirectoryPath;
+    public ContentCollector(Configuration config) {
+        this.mdContentDirectoryPath = config.getMarkdownContentDirectoryPath();
     }
 
     private File[] getMDBlogEntries() {
-        File mdDirectory = new File(mdDirectoryPath);
+        File mdDirectory = new File(mdContentDirectoryPath);
         File[] mdFiles = mdDirectory.listFiles(new FileFilter() {
             @Override
             public boolean accept(File pathname) {
