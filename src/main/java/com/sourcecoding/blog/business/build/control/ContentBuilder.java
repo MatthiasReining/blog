@@ -5,7 +5,7 @@
 package com.sourcecoding.blog.business.build.control;
 
 import com.sourcecoding.blog.business.build.entity.BlogEntry;
-import com.sourcecoding.blog.business.configuration.boundary.entity.Configuration;
+import com.sourcecoding.blog.business.configuration.entity.Configuration;
 import freemarker.template.Template;
 import java.io.*;
 import java.util.HashMap;

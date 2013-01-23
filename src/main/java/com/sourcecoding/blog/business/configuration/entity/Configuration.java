@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.sourcecoding.blog.business.configuration.boundary.entity;
+package com.sourcecoding.blog.business.configuration.entity;
 
 /**
  *

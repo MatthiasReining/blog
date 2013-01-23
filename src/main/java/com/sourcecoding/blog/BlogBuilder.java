@@ -7,7 +7,7 @@ package com.sourcecoding.blog;
 import com.sourcecoding.blog.business.build.control.ContentBuilder;
 import com.sourcecoding.blog.business.build.control.ContentCollector;
 import com.sourcecoding.blog.business.build.entity.BlogEntry;
-import com.sourcecoding.blog.business.configuration.boundary.entity.Configuration;
+import com.sourcecoding.blog.business.configuration.entity.Configuration;
 import freemarker.template.Template;
 import java.util.List;
 
