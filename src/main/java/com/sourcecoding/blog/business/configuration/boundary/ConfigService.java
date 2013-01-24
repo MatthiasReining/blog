@@ -7,9 +7,7 @@ package com.sourcecoding.blog.business.configuration.boundary;
 import com.sourcecoding.blog.business.configuration.entity.Configuration;
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -38,6 +36,12 @@ public class ConfigService {
 
     @GET
     public Configuration getConfiguration() {
+        return config;
+    }
+
+    @POST
+    public Configuration updateConfiguration(Configuration config) {
+        this.config = config;
         return config;
     }
 }
