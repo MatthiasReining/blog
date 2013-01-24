@@ -6,6 +6,7 @@ package com.sourcecoding.blog.business.build.boundary;
 
 import com.sourcecoding.blog.business.build.control.ContentBuilder;
 import com.sourcecoding.blog.business.build.control.ContentCollector;
+import com.sourcecoding.blog.business.build.control.CopyingMachine;
 import com.sourcecoding.blog.business.build.entity.BlogEntry;
 import com.sourcecoding.blog.business.configuration.boundary.ConfigService;
 import com.sourcecoding.blog.business.configuration.entity.Configuration;
@@ -14,8 +15,7 @@ import java.io.File;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
+import javax.ws.rs.*;
 
 /**
  *
@@ -46,5 +46,18 @@ public class BlogBuilder {
 
         template = templateConfiguration.getTemplate("index.html");
         cb.createIndex(template, 5);
+
+        CopyingMachine cp = new CopyingMachine();
+        cp.copyDirectory(config.getWebResourcesDirctoryPath(), config.getHtmlExportRootDirectoryPath());
+    }
+
+    @GET
+    public List<BlogEntry> getCurrentBloggerContent() {
+        Configuration config = configService.getConfiguration();
+
+        ContentCollector cc = new ContentCollector(config);
+        List<BlogEntry> entries = cc.collect();
+
+        return entries;
     }
 }

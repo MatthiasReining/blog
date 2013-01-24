@@ -23,7 +23,7 @@ public class CopyingMachineTest {
 
         File sourceDir = new File(baseDir + "src/main/resources/web-resources");
         System.out.println(sourceDir.getAbsolutePath());
-        cp.copy(sourceDir, targetDir);
+        cp.copyDirectory(sourceDir, targetDir);
 
     }
 }

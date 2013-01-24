@@ -6,7 +6,13 @@ package com.sourcecoding.blog.business.build.control;
 
 import com.sourcecoding.blog.business.build.entity.BlogEntry;
 import com.sourcecoding.blog.business.configuration.entity.Configuration;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileFilter;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -61,7 +67,8 @@ public class ContentCollector {
         boolean collectMetaInfo = true;
         StringBuilder content = new StringBuilder();
         String line;
-        BufferedReader br = new BufferedReader(new FileReader(mdFile));
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(mdFile), "UTF-8"));
 
         while ((line = br.readLine()) != null) {
 

@@ -7,10 +7,13 @@ package com.sourcecoding.blog.business.build.control;
 import com.sourcecoding.blog.business.build.entity.BlogEntry;
 import com.sourcecoding.blog.business.configuration.entity.Configuration;
 import freemarker.template.Template;
-import java.io.*;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
+import java.util.*;
 
 /**
  *
@@ -59,8 +62,10 @@ public class ContentBuilder {
 
         String filePath = config.getHtmlExportRootDirectoryPath() + File.separator + "index.html";
         System.out.println("create " + filePath);
-        try (Writer file = new FileWriter(new File(filePath))) {
+        try (Writer file = new BufferedWriter(new OutputStreamWriter(
+                new FileOutputStream(filePath), "UTF-8"))) {
             template.process(data, file);
+
             file.flush();
         }
     }

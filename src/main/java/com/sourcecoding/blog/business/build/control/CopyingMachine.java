@@ -4,7 +4,10 @@
  */
 package com.sourcecoding.blog.business.build.control;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  *
@@ -12,11 +15,11 @@ import java.io.*;
  */
 public class CopyingMachine {
 
-    public void copy(String sourceDirectoryPath, String targetDirectoryPath) {
-        copy(new File(sourceDirectoryPath), new File(targetDirectoryPath));
+    public void copyDirectory(String sourceDirectoryPath, String targetDirectoryPath) {
+        copyDirectory(new File(sourceDirectoryPath), new File(targetDirectoryPath));
     }
 
-    public void copy(File sourceDir, File targetDir) {
+    public void copyDirectory(File sourceDir, File targetDir) {
 
         for (File sourceFile : sourceDir.listFiles()) {
             File targetFile = new File(targetDir.getAbsolutePath() + File.separator + sourceFile.getName());
@@ -24,13 +27,13 @@ public class CopyingMachine {
             if (sourceFile.isDirectory()) {
                 if (!targetFile.exists())
                     targetFile.mkdir();;
-                copy(sourceFile, targetFile);
+                copyDirectory(sourceFile, targetFile);
             } else
                 copyFile(sourceFile, targetFile);
         }
     }
 
-    private void copyFile(File inputFile, File outputFile) {
+    public void copyFile(File inputFile, File outputFile) {
         try {
             FileReader in = new FileReader(inputFile);
             try (FileWriter out = new FileWriter(outputFile)) {
