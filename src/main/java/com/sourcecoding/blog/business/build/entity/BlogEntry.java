@@ -22,14 +22,12 @@ public class BlogEntry implements Serializable, Comparable<BlogEntry> {
     private String key;
 
     public String getAbstractHTMLContent() {
-        String link = "article2.xhtml?key=" + key;
-        return htmlContent.substring(0, htmlContent.indexOf("</p>")) + "<a href=\""+link+"\">[weiterlesen]</a></p>";
+        return htmlContent.substring(0, htmlContent.indexOf("</p>"));
     }
 
     public String getKey() {
-        if (key == null) {
+        if (key == null)
             key = BlogEntry.createSEOFriendlyURL(title);
-        }
         return key;
     }
 
@@ -48,12 +46,10 @@ public class BlogEntry implements Serializable, Comparable<BlogEntry> {
     @Override
     public int compareTo(BlogEntry o) {
 
-        if (o == null || o.getCreated() == null) {
+        if (o == null || o.getCreated() == null)
             return -1;
-        }
-        if (this.getCreated() == null) {
+        if (this.getCreated() == null)
             return 1;
-        }
         return (this.getCreated().compareTo(o.getCreated()));
 
     }
