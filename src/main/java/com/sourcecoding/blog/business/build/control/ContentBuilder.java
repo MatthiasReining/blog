@@ -7,13 +7,10 @@ package com.sourcecoding.blog.business.build.control;
 import com.sourcecoding.blog.business.build.entity.BlogEntry;
 import com.sourcecoding.blog.business.configuration.entity.Configuration;
 import freemarker.template.Template;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
-import java.util.*;
+import java.io.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -29,7 +26,7 @@ public class ContentBuilder {
         this.config = config;
         this.entries = entries;
 
-        data.put("blogRoot", config.getWebResourcesDirctoryPath());
+        data.put("blogRoot", config.getBlogPath());
     }
 
     public void createBlogEntries(Template template) throws Exception {
