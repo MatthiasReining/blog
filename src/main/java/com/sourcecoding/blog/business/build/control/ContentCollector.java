@@ -42,6 +42,8 @@ public class ContentCollector {
 
     void checkout() throws IOException {
 
+        if (config.getScmCheckoutDirectoryPath() == null)
+            return;
         System.out.println(">> " + config.getScmCheckoutDirectoryPath() + "> git pull");
         Process p = Runtime.getRuntime().exec("git pull", null, new File(config.getScmCheckoutDirectoryPath()));
         Reader r = new InputStreamReader(p.getInputStream());

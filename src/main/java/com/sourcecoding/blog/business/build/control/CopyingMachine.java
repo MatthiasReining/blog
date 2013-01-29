@@ -22,27 +22,33 @@ public class CopyingMachine {
             File targetFile = new File(targetDir.getAbsolutePath() + File.separator + sourceFile.getName());
 
             if (sourceFile.isDirectory()) {
-                if (!targetFile.exists())
-                    targetFile.mkdir();;
+                if (!targetFile.exists()) {
+                    targetFile.mkdir();
+                }
                 copyDirectory(sourceFile, targetFile);
-            } else
+            } else {
                 copyFile(sourceFile, targetFile);
+            }
         }
     }
 
     public void copyFile(File inputFile, File outputFile) {
-        try {
-            System.out.println("copy " + inputFile.getName() + " to " + outputFile.getAbsolutePath());
-            FileReader in = new FileReader(inputFile);
-            try (FileWriter out = new FileWriter(outputFile)) {
-                int c;
-                while ((c = in.read()) != -1) {
-                    out.write(c);
-                }
-                in.close();
+
+        System.out.println("copy " + inputFile.getName() + " to " + outputFile.getAbsolutePath());
+
+        try (FileInputStream fis = new FileInputStream(inputFile);
+                FileOutputStream fos = new FileOutputStream(outputFile)) {
+
+
+            byte[] b = new byte[1024];
+            int noOfBytes;
+            while ((noOfBytes = fis.read(b)) != -1) {
+                fos.write(b, 0, noOfBytes);
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
+
+
     }
 }

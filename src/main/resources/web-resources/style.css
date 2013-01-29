@@ -115,6 +115,25 @@ article > footer {
     color: inherit;
 }
 
+@media screen {
+.older {
+    position: fixed;
+    top: 40%;
+    left: 0;
+    background-image: url("img/left.png");
+    width: 70px;
+    height: 70px;
+}
+.newer {
+    position: fixed;
+    top: 40%;
+    right: 0;
+    background-image: url("img/right.png");
+    width: 70px;
+    height: 70px;
+}
+}
+
 
 @font-face {
 	/* downloaded from http://www.fontsquirrel.com/fonts/Linux-Libertine */
