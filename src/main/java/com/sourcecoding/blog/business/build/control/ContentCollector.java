@@ -6,18 +6,10 @@ package com.sourcecoding.blog.business.build.control;
 
 import com.sourcecoding.blog.business.build.entity.BlogEntry;
 import com.sourcecoding.blog.business.configuration.entity.Configuration;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileFilter;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import org.pegdown.PegDownProcessor;
 
 /**
@@ -27,8 +19,10 @@ import org.pegdown.PegDownProcessor;
 public class ContentCollector {
 
     private String mdContentDirectoryPath;
+    private Configuration config;
 
     public ContentCollector(Configuration config) {
+        this.config = config;
         this.mdContentDirectoryPath = config.getMarkdownContentDirectoryPath();
     }
 
@@ -46,7 +40,23 @@ public class ContentCollector {
         return mdFiles;
     }
 
-    public List<BlogEntry> collect() {
+    void checkout() throws IOException {
+
+        System.out.println(">> " + config.getScmCheckoutDirectoryPath() + "> git pull");
+        Process p = Runtime.getRuntime().exec("git pull", null, new File(config.getScmCheckoutDirectoryPath()));
+        Reader r = new InputStreamReader(p.getInputStream());
+        System.out.println("fetch (pull) data from github");
+        try (BufferedReader in = new BufferedReader(r)) {
+            String line;
+            while ((line = in.readLine()) != null) {
+                System.out.println(line);
+            }
+        }
+    }
+
+    public List<BlogEntry> collect() throws IOException {
+        checkout();
+
         List<BlogEntry> entries = new ArrayList<>();
         for (File mdFile : getMDBlogEntries()) {
             try {

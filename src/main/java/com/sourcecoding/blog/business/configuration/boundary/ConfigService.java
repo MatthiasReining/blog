@@ -25,12 +25,12 @@ public class ConfigService {
     void init() {
 
         config = new Configuration();
-        config.setBlogPath("/blog");
-        config.setFreemarkerTemplateDirectoryPath("D:\\labs\\blog\\src\\main\\resources\\templates");
-        config.setHtmlExportRootDirectoryPath("D:\\java-server\\tomcat\\apache-tomcat-7.0.34\\webapps\\blog");
-        config.setMarkdownContentDirectoryPath("D:\\labs\\blog\\src\\test\\resources");
-        config.setWebResourcesDirctoryPath("D:\\labs\\blog\\src\\main\\resources\\web-resources");
-
+        config.setBlogPath("");
+        config.setFreemarkerTemplateDirectoryPath("/data/blog/blog/src/main/resources/templates");
+        config.setHtmlExportRootDirectoryPath("/data/apache/blog.matthias-reining.com");
+        config.setMarkdownContentDirectoryPath("/data/blog/blog/src/test/resources");
+        config.setWebResourcesDirctoryPath("/data/blog/blog/src/main/resources/web-resources");
+        config.setScmCheckoutDirectoryPath("/data/blog/blog");
 
     }
 

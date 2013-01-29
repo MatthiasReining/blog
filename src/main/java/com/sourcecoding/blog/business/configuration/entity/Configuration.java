@@ -15,6 +15,7 @@ public class Configuration {
     private String blogPath;
     private String freemarkerTemplateDirectoryPath;
     private String webResourcesDirctoryPath;
+    private String scmCheckoutDirectoryPath;
 
     public String getHtmlExportRootDirectoryPath() {
         return htmlExportRootDirectoryPath;
@@ -88,5 +89,13 @@ public class Configuration {
      */
     public void setWebResourcesDirctoryPath(String webResourcesDirctoryPath) {
         this.webResourcesDirctoryPath = webResourcesDirctoryPath;
+    }
+
+    public String getScmCheckoutDirectoryPath() {
+        return scmCheckoutDirectoryPath;
+    }
+
+    public void setScmCheckoutDirectoryPath(String scmCheckoutDirectoryPath) {
+        this.scmCheckoutDirectoryPath = scmCheckoutDirectoryPath;
     }
 }
