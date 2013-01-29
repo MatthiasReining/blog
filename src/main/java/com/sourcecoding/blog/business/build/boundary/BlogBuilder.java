@@ -4,7 +4,9 @@
  */
 package com.sourcecoding.blog.business.build.boundary;
 
-import com.sourcecoding.blog.business.build.control.*;
+import com.sourcecoding.blog.business.build.control.ContentBuilder;
+import com.sourcecoding.blog.business.build.control.ContentCollector;
+import com.sourcecoding.blog.business.build.control.CopyingMachine;
 import com.sourcecoding.blog.business.build.entity.BlogEntry;
 import com.sourcecoding.blog.business.configuration.boundary.ConfigService;
 import com.sourcecoding.blog.business.configuration.entity.Configuration;
@@ -14,9 +16,7 @@ import java.io.IOException;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
+import javax.ws.rs.*;
 
 /**
  *
@@ -63,7 +63,7 @@ public class BlogBuilder {
     }
 
     @Path("fromGitHub")
-    @GET
+    @POST
     public void runBuilderFromGitHub() throws Exception {
         runBuilder();
     }
