@@ -50,7 +50,7 @@ public class BlogEntry implements Serializable, Comparable<BlogEntry> {
             return -1;
         if (this.getCreated() == null)
             return 1;
-        return (this.getCreated().compareTo(o.getCreated()));
+        return (o.getCreated().compareTo(this.getCreated()));
 
     }
 

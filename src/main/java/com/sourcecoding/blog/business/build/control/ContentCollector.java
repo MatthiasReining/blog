@@ -16,6 +16,7 @@ import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import org.pegdown.PegDownProcessor;
 
@@ -57,6 +58,7 @@ public class ContentCollector {
                 System.err.println("Error: " + e.getMessage());
             }
         }
+        Collections.sort(entries);
         return entries;
     }
 

@@ -4,8 +4,7 @@
  */
 package com.sourcecoding.blog;
 
-import com.sourcecoding.blog.business.build.control.ContentBuilder;
-import com.sourcecoding.blog.business.build.control.ContentCollector;
+import com.sourcecoding.blog.business.build.control.*;
 import com.sourcecoding.blog.business.build.entity.BlogEntry;
 import com.sourcecoding.blog.business.configuration.entity.Configuration;
 import freemarker.template.Template;
@@ -46,5 +45,7 @@ public class BlogBuilder {
         template = templateConfiguration.getTemplate("src/main/resources/templates/index.html");
         cb.createIndex(template, 5);
 
+        CopyingMachine cp = new CopyingMachine();
+        cp.copyDirectory(config.getWebResourcesDirctoryPath(), config.getHtmlExportRootDirectoryPath());
     }
 }

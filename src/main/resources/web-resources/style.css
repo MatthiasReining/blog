@@ -101,6 +101,20 @@ article > footer {
     font-size: 0.9em;
 }
 
+#blog > footer {
+    padding: 5px 100px 10px 120px;
+}
+
+#blog > footer > section {
+    text-align: center;
+    font-size: 1.8em;
+}
+
+#blog > footer > section a {
+    /*text-decoration: none;*/
+    color: inherit;
+}
+
 
 @font-face {
 	/* downloaded from http://www.fontsquirrel.com/fonts/Linux-Libertine */

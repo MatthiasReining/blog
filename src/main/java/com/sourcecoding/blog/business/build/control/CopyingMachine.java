@@ -4,10 +4,7 @@
  */
 package com.sourcecoding.blog.business.build.control;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 /**
  *
@@ -35,6 +32,7 @@ public class CopyingMachine {
 
     public void copyFile(File inputFile, File outputFile) {
         try {
+            System.out.println("copy " + inputFile.getName() + " to " + outputFile.getAbsolutePath());
             FileReader in = new FileReader(inputFile);
             try (FileWriter out = new FileWriter(outputFile)) {
                 int c;
