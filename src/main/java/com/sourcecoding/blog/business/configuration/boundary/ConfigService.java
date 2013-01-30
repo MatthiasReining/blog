@@ -26,11 +26,11 @@ public class ConfigService {
 
         config = new Configuration();
         config.setBlogPath("");
-        config.setFreemarkerTemplateDirectoryPath("/data/blog/blog/src/main/resources/templates");
+        config.setFreemarkerTemplateDirectoryPath("/data/blog/my-blog/resources/templates");
         config.setHtmlExportRootDirectoryPath("/data/apache/blog.matthias-reining.com");
-        config.setMarkdownContentDirectoryPath("/data/blog/blog/src/test/resources");
-        config.setWebResourcesDirctoryPath("/data/blog/blog/src/main/resources/web-resources");
-        config.setScmCheckoutDirectoryPath("/data/blog/blog");
+        config.setMarkdownContentDirectoryPath("/data/blog/my-blog/content");
+        config.setWebResourcesDirctoryPath("/data/blog/my-blog/resources/web-resources");
+        config.setScmCheckoutDirectoryPath("/data/blog/my-blog");
 
     }
 
