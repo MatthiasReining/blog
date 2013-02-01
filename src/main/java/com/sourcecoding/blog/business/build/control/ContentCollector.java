@@ -71,6 +71,15 @@ public class ContentCollector {
             }
         }
         Collections.sort(entries);
+
+        //set prev and next entries
+        for (int i = 0; i < entries.size(); i++) {
+            if (i > 0)
+                entries.get(i).setPrevEntry(entries.get(i - 1));
+
+            if ((i + 1) < entries.size())
+                entries.get(i).setNextEntry(entries.get(i + 1));
+        }
         return entries;
     }
 
@@ -87,6 +96,7 @@ public class ContentCollector {
         while ((line = br.readLine()) != null) {
 
             if (line.isEmpty()) //after an empty line markdown content starts
+
                 collectMetaInfo = false;
 
             if (collectMetaInfo)
