@@ -8,6 +8,7 @@ import com.sourcecoding.blog.business.build.control.*;
 import com.sourcecoding.blog.business.build.entity.BlogEntry;
 import com.sourcecoding.blog.business.configuration.entity.Configuration;
 import freemarker.template.Template;
+import java.io.File;
 import java.util.List;
 
 /**
@@ -24,12 +25,14 @@ public class BlogBuilder {
         else
             exportPath = "D:\\java-server\\tomcat\\apache-tomcat-7.0.34\\webapps\\blog";
 
+        String myBlogRootPath = "D:\\labs\\my-blog\\";
+
         Configuration config = new Configuration();
         config.setBlogPath("/blog");
-        config.setFreemarkerTemplateDirectoryPath("D:\\labs\\my-blog\\resources\\templates");
+        config.setFreemarkerTemplateDirectoryPath(myBlogRootPath + "resources\\templates");
         config.setHtmlExportRootDirectoryPath(exportPath);
-        config.setMarkdownContentDirectoryPath("D:\\labs\\my-blog\\resources\\content");
-        config.setWebResourcesDirctoryPath("D:\\labs\\my-blog\\resources\\web-resources");
+        config.setMarkdownContentDirectoryPath(myBlogRootPath + "resources\\content");
+        config.setWebResourcesDirctoryPath(myBlogRootPath + "resources\\web-resources");
 
 
         ContentCollector cc = new ContentCollector(config);
@@ -38,11 +41,14 @@ public class BlogBuilder {
         ContentBuilder cb = new ContentBuilder(entries, config);
 
         //Freemarker configuration object
+
+        //Freemarker configuration object
         freemarker.template.Configuration templateConfiguration = new freemarker.template.Configuration();
-        Template template = templateConfiguration.getTemplate("src/main/resources/templates/article.html");
+        templateConfiguration.setDirectoryForTemplateLoading(new File(config.getFreemarkerTemplateDirectoryPath()));
+        Template template = templateConfiguration.getTemplate("article.html");
         cb.createBlogEntries(template);
 
-        template = templateConfiguration.getTemplate("src/main/resources/templates/index.html");
+        template = templateConfiguration.getTemplate("index.html");
         cb.createIndex(template, 5);
 
         CopyingMachine cp = new CopyingMachine();
