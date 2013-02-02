@@ -21,12 +21,12 @@ public class ContentCollectorTest {
 
         Process p = Runtime.getRuntime().exec("git pull", null, new File("D:\\labs\\blog-export\\gitblog\\blog"));
         Reader r = new InputStreamReader(p.getInputStream());
-        BufferedReader in = new BufferedReader(r);
-        String line;
-        while ((line = in.readLine()) != null) {
-            System.out.println(line);
+        try (BufferedReader in = new BufferedReader(r)) {
+            String line;
+            while ((line = in.readLine()) != null) {
+                System.out.println(line);
+            }
         }
-        in.close();
 
         System.out.println("mit git fertig...");
 

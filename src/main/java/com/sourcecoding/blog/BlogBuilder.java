@@ -26,10 +26,10 @@ public class BlogBuilder {
 
         Configuration config = new Configuration();
         config.setBlogPath("/blog");
-        config.setFreemarkerTemplateDirectoryPath("D:\\labs\\blog\\src\\main\\resources\\templates");
+        config.setFreemarkerTemplateDirectoryPath("D:\\labs\\my-blog\\resources\\templates");
         config.setHtmlExportRootDirectoryPath(exportPath);
-        config.setMarkdownContentDirectoryPath("D:\\labs\\blog\\src\\test\\resources");
-        config.setWebResourcesDirctoryPath("D:\\labs\\blog\\src\\main\\resources\\web-resources");
+        config.setMarkdownContentDirectoryPath("D:\\labs\\my-blog\\resources\\content");
+        config.setWebResourcesDirctoryPath("D:\\labs\\my-blog\\resources\\web-resources");
 
 
         ContentCollector cc = new ContentCollector(config);

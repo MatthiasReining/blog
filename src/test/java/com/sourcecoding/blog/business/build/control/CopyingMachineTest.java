@@ -21,7 +21,7 @@ public class CopyingMachineTest {
         File targetDir = new File(baseDir + "target/copyTest");
         targetDir.mkdir();
 
-        File sourceDir = new File(baseDir + "src/main/resources/web-resources");
+        File sourceDir = new File(baseDir + "src/test/resources/web-resources");
         System.out.println(sourceDir.getAbsolutePath());
         cp.copyDirectory(sourceDir, targetDir);
 
