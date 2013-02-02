@@ -28,7 +28,7 @@ public class ConfigService {
         config.setBlogPath("");
         config.setFreemarkerTemplateDirectoryPath("/data/blog/my-blog/resources/templates");
         config.setHtmlExportRootDirectoryPath("/data/apache/blog.matthias-reining.com");
-        config.setMarkdownContentDirectoryPath("/data/blog/my-blog/content");
+        config.setMarkdownContentDirectoryPath("/data/blog/my-blog/resources/content");
         config.setWebResourcesDirctoryPath("/data/blog/my-blog/resources/web-resources");
         config.setScmCheckoutDirectoryPath("/data/blog/my-blog");
 
