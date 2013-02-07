@@ -51,7 +51,15 @@ public class BlogBuilder {
         template = templateConfiguration.getTemplate("index.html");
         cb.createIndex(template, 5);
 
+        template = templateConfiguration.getTemplate("sitemap.xml");
+        cb.createSiteMapXML(template);
+
+        template = templateConfiguration.getTemplate("rss2.xml");
+        cb.createRSS(template);
+
         CopyingMachine cp = new CopyingMachine();
         cp.copyDirectory(config.getWebResourcesDirctoryPath(), config.getHtmlExportRootDirectoryPath());
+
+
     }
 }
