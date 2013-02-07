@@ -10,6 +10,8 @@ import com.sourcecoding.blog.business.configuration.entity.Configuration;
 import freemarker.template.Template;
 import java.io.File;
 import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 
 /**
  *
@@ -44,6 +46,9 @@ public class BlogBuilder {
 
         //Freemarker configuration object
         freemarker.template.Configuration templateConfiguration = new freemarker.template.Configuration();
+        templateConfiguration.setDefaultEncoding("UTF-8");
+        templateConfiguration.setLocale(Locale.US);
+        templateConfiguration.setTimeZone(TimeZone.getTimeZone("GMT"));
         templateConfiguration.setDirectoryForTemplateLoading(new File(config.getFreemarkerTemplateDirectoryPath()));
         Template template = templateConfiguration.getTemplate("article.html");
         cb.createBlogEntries(template);
