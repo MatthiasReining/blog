@@ -28,8 +28,16 @@ public class BlogEntry implements Serializable, Comparable<BlogEntry> {
         return htmlContent.substring(0, htmlContent.indexOf("</p>"));
     }
 
+    public String getAbstractHtmlEncodedContent() {
+        return StringUtil.HTMLEnc(getAbstractHTMLContent());
+    }
+
     public String getHtmlEncodedContent() {
         return StringUtil.HTMLEnc(htmlContent);
+    }
+
+    public String getRssContent() {
+        return "<![CDATA[" + htmlContent + "]]>";
     }
 
     public String getKey() {

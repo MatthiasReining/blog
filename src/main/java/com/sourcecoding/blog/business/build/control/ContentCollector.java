@@ -10,6 +10,7 @@ import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import org.pegdown.Extensions;
 import org.pegdown.PegDownProcessor;
 
 /**
@@ -106,7 +107,7 @@ public class ContentCollector {
                 content.append(line).append("\n");
         }
 
-        PegDownProcessor pdp = new PegDownProcessor();
+        PegDownProcessor pdp = new PegDownProcessor(Extensions.ALL);
         String htmlContent = pdp.markdownToHtml(content.toString());
         be.setHtmlContent(htmlContent);
 
