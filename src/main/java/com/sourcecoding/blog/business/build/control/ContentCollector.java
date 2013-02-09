@@ -107,7 +107,7 @@ public class ContentCollector {
                 content.append(line).append("\n");
         }
 
-        PegDownProcessor pdp = new PegDownProcessor(Extensions.ALL);
+        PegDownProcessor pdp = new PegDownProcessor(Extensions.TABLES);
         String htmlContent = pdp.markdownToHtml(content.toString());
         be.setHtmlContent(htmlContent);
 
