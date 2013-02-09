@@ -7,6 +7,7 @@ package com.sourcecoding.blog.business.build.boundary;
 import com.sourcecoding.blog.business.build.control.ContentBuilder;
 import com.sourcecoding.blog.business.build.control.ContentCollector;
 import com.sourcecoding.blog.business.build.control.CopyingMachine;
+import com.sourcecoding.blog.business.build.control.SitemapPinger;
 import com.sourcecoding.blog.business.build.entity.BlogEntry;
 import com.sourcecoding.blog.business.configuration.boundary.ConfigService;
 import com.sourcecoding.blog.business.configuration.entity.Configuration;
@@ -63,8 +64,7 @@ public class BlogBuilder {
         CopyingMachine cp = new CopyingMachine();
         cp.copyDirectory(config.getWebResourcesDirctoryPath(), config.getHtmlExportRootDirectoryPath());
 
-        //FIXME call sitemap registration
-        //<searchengine_URL>/ping?sitemap=http://www.example.com/sitemap.gz
+        new SitemapPinger().ping(config.getHostname() + config.getBlogPath() + "/sitemap.xml");
     }
 
     @GET

@@ -66,5 +66,8 @@ public class BlogBuilder {
         cp.copyDirectory(config.getWebResourcesDirctoryPath(), config.getHtmlExportRootDirectoryPath());
 
 
+        new SitemapPinger().ping("http://blog.matthias-reining.com/sitemap.xml");
+
+
     }
 }

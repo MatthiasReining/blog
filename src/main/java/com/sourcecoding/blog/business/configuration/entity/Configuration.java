@@ -16,6 +16,7 @@ public class Configuration {
     private String freemarkerTemplateDirectoryPath;
     private String webResourcesDirctoryPath;
     private String scmCheckoutDirectoryPath;
+    private String hostname;
 
     public String getHtmlExportRootDirectoryPath() {
         return htmlExportRootDirectoryPath;
@@ -97,5 +98,13 @@ public class Configuration {
 
     public void setScmCheckoutDirectoryPath(String scmCheckoutDirectoryPath) {
         this.scmCheckoutDirectoryPath = scmCheckoutDirectoryPath;
+    }
+
+    public String getHostname() {
+        return hostname;
+    }
+
+    public void setHostname(String hostname) {
+        this.hostname = hostname;
     }
 }
