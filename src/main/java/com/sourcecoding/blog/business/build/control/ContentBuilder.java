@@ -29,6 +29,7 @@ public class ContentBuilder {
         this.config = config;
         this.entries = entries;
 
+        data.put("config", config);
         data.put("blogRoot", config.getBlogPath());
     }
 
@@ -54,7 +55,6 @@ public class ContentBuilder {
     public void createIndex(Template template, int maxNumberOfArticleInList) throws Exception {
 
         data.put("isIndexPage", true);
-
         data.put("entry", entries.get(0)); //first one
 
         int numberOfArticeList = (entries.size() < maxNumberOfArticleInList) ? entries.size() : maxNumberOfArticleInList;
