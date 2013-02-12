@@ -70,6 +70,21 @@ public class ContentBuilder {
         }
     }
 
+    public void createEntryList(Template template) throws Exception {
+
+        String entryListPath = config.getHtmlExportRootDirectoryPath() + File.separator + "entries";
+        new File(entryListPath).mkdir();
+
+        data.put("entries", entries);
+
+        String filePath = entryListPath + File.separator + "index.html";
+        System.out.println("create " + filePath);
+        try (Writer file = new FileWriter(new File(filePath))) {
+            template.process(data, file);
+            file.flush();
+        }
+    }
+
     public void createSiteMapXML(Template template) throws Exception {
         data.put("entries", entries);
         writeFile(template, "sitemap.xml");

@@ -20,6 +20,7 @@ public class BlogEntry implements Serializable, Comparable<BlogEntry> {
     private Date created;
     private String htmlContent;
     private List<String> tags;
+    private String keywords;
     private String key;
     private BlogEntry nextEntry;
     private BlogEntry prevEntry;
@@ -124,5 +125,13 @@ public class BlogEntry implements Serializable, Comparable<BlogEntry> {
 
     public void setPrevEntry(BlogEntry prevEntry) {
         this.prevEntry = prevEntry;
+    }
+
+    public String getKeywords() {
+        return keywords;
+    }
+
+    public void setKeywords(String keywords) {
+        this.keywords = keywords;
     }
 }

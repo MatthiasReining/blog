@@ -56,6 +56,9 @@ public class BlogBuilder {
         template = templateConfiguration.getTemplate("index.html");
         cb.createIndex(template, 5);
 
+        template = templateConfiguration.getTemplate("entry-list.html");
+        cb.createEntryList(template);
+
         template = templateConfiguration.getTemplate("sitemap.xml");
         cb.createSiteMapXML(template);
 

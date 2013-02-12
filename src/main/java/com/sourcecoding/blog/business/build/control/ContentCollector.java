@@ -135,5 +135,17 @@ public class ContentCollector {
             String dateText = getValueFromPropertyLine(line, "created");
             be.setCreated(sdf.parse(dateText));
         }
+
+        if (line.startsWith("tags")) {
+            String tags = getValueFromPropertyLine(line, "tags");
+            if (tags != null) {
+                be.setKeywords(tags);
+                String tagArray[] = tags.split(",");
+                for (int i = 0; i < tagArray.length; i++) {
+                    tagArray[i] = tagArray[i].trim();
+                }
+                be.setTags(Arrays.asList(tagArray));
+            }
+        }
     }
 }
