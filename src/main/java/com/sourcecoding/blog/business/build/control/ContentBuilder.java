@@ -9,6 +9,8 @@ import com.sourcecoding.blog.business.configuration.entity.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -75,7 +77,20 @@ public class ContentBuilder {
         String entryListPath = config.getHtmlExportRootDirectoryPath() + File.separator + "entries";
         new File(entryListPath).mkdir();
 
+        List<BlogEntry> oldEntries = new ArrayList<>();
+        List<BlogEntry> newEntries = new ArrayList<>();
+
+        Date modernTimes = new SimpleDateFormat("yyyy-mm-dd").parse("2013-02-01");
+        for (BlogEntry be : entries) {
+            if (be.getCreated().after(modernTimes))
+                newEntries.add(be);
+            else
+                oldEntries.add(be);
+        }
+
         data.put("entries", entries);
+        data.put("oldEntries", oldEntries);
+        data.put("newEntries", newEntries);
 
         String filePath = entryListPath + File.separator + "index.html";
         System.out.println("create " + filePath);
