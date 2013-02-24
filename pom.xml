@@ -45,6 +45,14 @@
             <artifactId>pegdown</artifactId>
             <version>1.2.1</version>
         </dependency>
+        
+        <!-- for standalone test -->
+        <dependency>
+            <groupId>net.sourceforge.winstone</groupId>
+            <artifactId>winstone</artifactId>
+            <version>0.9.10</version>
+        </dependency>
+            
 
     </dependencies>
 
@@ -68,6 +76,18 @@
                 <version>2.1.1</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
+                    
+                    <archive>
+                        <manifest>
+                            <mainClass>WarStarter</mainClass>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                            <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+                        </manifest>
+                        <manifestEntries>
+                            <WarStarter-Main-Class>com.sourcecoding.blog.app.Main</WarStarter-Main-Class>
+                        </manifestEntries>
+                    </archive>                       
+                        
                 </configuration>
             </plugin>
             <plugin>
@@ -97,5 +117,5 @@
             </plugin>
         </plugins>
     </build>
-
+    
 </project>

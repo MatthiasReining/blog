@@ -47,7 +47,13 @@ public class ContentBuilder {
 
             String filePath = articleDirPath + File.separator + "index.html";
             System.out.println("create " + filePath);
-            try (Writer file = new FileWriter(new File(filePath))) {
+
+
+            try (Writer file = new BufferedWriter(new OutputStreamWriter(
+                new FileOutputStream(filePath), "UTF-8"))) {
+            //try (Writer file = new OutputStreamWriter(new FileOutputStream(new File(filePath)), "UTF-8")) {
+            //try (Writer file = new FileWriter(new File(filePath))) {
+                file.write("\uFEFF"); //force utf-8
                 template.process(data, file);
                 file.flush();
             }
@@ -66,8 +72,8 @@ public class ContentBuilder {
         System.out.println("create " + filePath);
         try (Writer file = new BufferedWriter(new OutputStreamWriter(
                 new FileOutputStream(filePath), "UTF-8"))) {
+            file.write("\uFEFF"); //force utf-8
             template.process(data, file);
-
             file.flush();
         }
     }
@@ -95,6 +101,7 @@ public class ContentBuilder {
         String filePath = entryListPath + File.separator + "index.html";
         System.out.println("create " + filePath);
         try (Writer file = new FileWriter(new File(filePath))) {
+            file.write("\uFEFF"); //force utf-8
             template.process(data, file);
             file.flush();
         }

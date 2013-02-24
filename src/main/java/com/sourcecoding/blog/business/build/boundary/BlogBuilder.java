@@ -34,9 +34,30 @@ public class BlogBuilder {
 
     @PUT
     public void runBuilder() throws Exception {
+        Configuration config = configService.getConfiguration();
+        
+        generateContent(config);
 
+        new SitemapPinger().ping(config.getHostname() + config.getBlogPath() + "/sitemap.xml");
+    }
+
+    @GET
+    public List<BlogEntry> getCurrentBloggerContent() throws IOException {
         Configuration config = configService.getConfiguration();
 
+        ContentCollector cc = new ContentCollector(config);
+        List<BlogEntry> entries = cc.collect();
+
+        return entries;
+    }
+
+    @Path("fromGitHub")
+    @POST
+    public void runBuilderFromGitHub() throws Exception {
+        runBuilder();
+    }
+
+    public void generateContent(Configuration config) throws IOException, Exception {
         ContentCollector cc = new ContentCollector(config);
         List<BlogEntry> entries = cc.collect();
 
@@ -46,6 +67,7 @@ public class BlogBuilder {
         freemarker.template.Configuration templateConfiguration = new freemarker.template.Configuration();
         templateConfiguration.setDefaultEncoding("UTF-8");
         templateConfiguration.setLocale(Locale.US);
+        templateConfiguration.setOutputEncoding("UTF-8");
         templateConfiguration.setTimeZone(TimeZone.getTimeZone("GMT"));
         templateConfiguration.setDirectoryForTemplateLoading(new File(config.getFreemarkerTemplateDirectoryPath()));
         Template template = templateConfiguration.getTemplate("article.html");
@@ -66,23 +88,5 @@ public class BlogBuilder {
 
         CopyingMachine cp = new CopyingMachine();
         cp.copyDirectory(config.getWebResourcesDirctoryPath(), config.getHtmlExportRootDirectoryPath());
-
-        new SitemapPinger().ping(config.getHostname() + config.getBlogPath() + "/sitemap.xml");
-    }
-
-    @GET
-    public List<BlogEntry> getCurrentBloggerContent() throws IOException {
-        Configuration config = configService.getConfiguration();
-
-        ContentCollector cc = new ContentCollector(config);
-        List<BlogEntry> entries = cc.collect();
-
-        return entries;
-    }
-
-    @Path("fromGitHub")
-    @POST
-    public void runBuilderFromGitHub() throws Exception {
-        runBuilder();
     }
 }
