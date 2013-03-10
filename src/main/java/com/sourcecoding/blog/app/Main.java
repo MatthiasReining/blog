@@ -27,7 +27,7 @@ public class Main {
         if (args.length > 0)
             exportPath = args[0];
         else
-            exportPath = "D:\\java-server\\tomcat\\apache-tomcat-7.0.34\\webapps\\blog";
+            exportPath = "D:\\labs\\blog-export\\gitblog\\blog";
 
         String myBlogRootPath = "D:\\labs\\my-blog\\";
 
