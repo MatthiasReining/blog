@@ -5,12 +5,14 @@
 package com.sourcecoding.blog.business.build.control;
 
 import java.io.*;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
  *
  * @author mre
  */
+@Ignore
 public class ContentCollectorTest {
 
     public ContentCollectorTest() {
